@@ -17,6 +17,7 @@ LEFT TO DO:
 
 const btn = document.querySelector("#country-button");
 btn.addEventListener("click", getLanguage);
+const container = document.querySelector("#country-container");
 
 function getLanguage(event) {
   event.preventDefault();
@@ -37,7 +38,6 @@ function fetchCountry(language) {
 
 function displayCountry(langData) {
   console.log(langData);
-  const container = document.querySelector("#country-container");
   container.innerHTML = "";
   langData.forEach((country) => {
     // const countryInfo = {
