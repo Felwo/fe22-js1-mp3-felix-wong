@@ -24,6 +24,7 @@ function getLanguage(event) {
 
   const language = input.value.toLowerCase();
   fetchCountry(language);
+  input.value = '';
 }
 
 function fetchCountry(language) {
