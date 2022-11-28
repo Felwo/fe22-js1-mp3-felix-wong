@@ -1,6 +1,7 @@
 :root{
     --clr-bg-color-: rgb(64, 69, 70);
-    --clr-txt-color-: rgb(235, 240, 235);
+    --clr-txt-color-: rgb(229, 240, 247);
+    --font-family-default-: system-ui;
 }
 
 *{
@@ -10,6 +11,7 @@
     border: 0;
     background-color: var(--clr-bg-color-);
     color: var(--clr-txt-color-);
+    font-family: var(--font-family-default-);
 }
 
 body{
