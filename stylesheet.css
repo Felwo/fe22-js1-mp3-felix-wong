@@ -1,0 +1,24 @@
+:root{
+    --clr-bg-color-: rgb(64, 69, 70);
+    --clr-txt-color-: rgb(235, 240, 235);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: var(--clr-bg-color-);
+    color: var(--clr-txt-color-);
+}
+
+body{
+    width: 100vw;
+    text-align: center;
+}
+
+#country-container {
+    display: flex;
+    gap: 1.25rem;
+    border: 2px solid black;
+}
