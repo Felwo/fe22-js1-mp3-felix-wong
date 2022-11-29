@@ -15,12 +15,15 @@
 }
 
 body{
-    width: 100vw;
+    max-width: 100vw;
+    min-width: 100vw;
     text-align: center;
 }
 
 #country-container {
     display: flex;
-    gap: 1.25rem;
-    border: 2px solid black;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    /* border: 2px solid black; */
 }

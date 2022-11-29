@@ -1,19 +1,3 @@
-/* TO DO LIST
-DONE:
-* Du ska använda REST Countries API version 3: Restcountry v 3
-* När en användare söker på ett språk ska följande information visas på webbsidan för samtliga länder i svaret:
-  - Officiellt namn
-  - Subregion
-  - Huvudstad
-  - Befolkningsmängd
-* En png-bild med landets flagga
-* Länder från tidigare sök ska tas bort vid varje nytt sök. Får man 1 sökträff ska alltså endast ett land visas. Får man 20 sökträffar ska 20 länder visas. 
-* Om språket inte går att hitta ska ett informerande meddelande visas på webbsidan. Meddelandet ska tas bort när man söker på ett nytt land.
---------------------------------------------------------
-LEFT TO DO:
-* Det landet med störst befolkningsmängd ska markeras på valfritt sätt. (Tex med text, färg eller border.)
-*/
-
 const btn = document.querySelector("#country-button");
 btn.addEventListener("click", getLanguage);
 const container = document.querySelector("#country-container");
@@ -38,21 +22,9 @@ function fetchCountry(language) {
 
 function displayCountry(langData) {
   console.log(langData);
-  container.innerHTML = "";
-  langData.forEach((country) => {
-    // const countryInfo = {
-    //   flag: document.createElement("img"),
-    //   countryName: document.createElement("h2"),
-    //   subregion: document.createElement("h3"),
-    //   capital: document.createElement("p"),
-    //   population: document.createElement("p"),
-    // };
-    // countryInfo.countryName.innerText = country.name.official;
-    // countryInfo.subregion.innerText = country.subregion;
-    // countryInfo.capital.innerText = country.capital;
-    // countryInfo.population.innerText = country.population;
-    // countryInfo.flag.src = country.flags.png;
-    // container.appendChild(countryInfo);
+  clearInput();
+  langData.sort((x, y) => y.population - x.population)
+  .forEach((country, index) => {
     const countryCard = document.createElement('div');
     container.append(countryCard);
     const countryName = document.createElement('h2');
@@ -70,12 +42,20 @@ function displayCountry(langData) {
     capital.innerText = "Capital: " + country.capital;
     population.innerText = "Population: " + country.population;
     flag.src = country.flags.png;
-});
+    if(index == 0){
+      countryName.style.textDecoration = 'underline';
+    }
+  });
+
 }
 
 function catchError() {
-  container.innerHTML = "";
+  clearInput();
   const errorText = document.createElement('h1');
   container.append(errorText);
   errorText.innerText = 'No countries found, try again';
+}
+
+function clearInput(){
+  return container.innerHTML = "";
 }
